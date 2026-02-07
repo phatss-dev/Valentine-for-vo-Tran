@@ -1,0 +1,250 @@
+:root {
+  --pink-glow-1: rgba(255, 102, 178, 0.8);
+  --pink-glow-2: rgba(255, 102, 178, 0.5);
+  --pink-strong: #ff66b2;
+  --bg-white-trans: rgba(255, 255, 255, 0.9);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(45deg, #ff99cc, #ff66b2, #ffb3d9, #ffe6f0);
+  background-size: 400%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  animation: gradientBG 12s ease infinite;
+}
+
+.lock-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
+}
+
+.password-form__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.password-form__title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px var(--pink-glow-1), 0 0 20px var(--pink-glow-2);
+  animation: glowText 2s ease-in-out infinite;
+}
+
+.password-form__avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+  animation: bounceAvatar 3s ease-in-out infinite;
+}
+
+.password-form__avatar:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 30px rgba(255, 102, 178, 0.7);
+}
+
+.password-form__input {
+  width: 220px;
+  padding: 12px;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  margin-bottom: 15px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  text-align: center;
+  background-color: var(--bg-white-trans);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.password-form__input.incorrect {
+  border-color: #f44336;
+  animation: shake 0.5s ease;
+}
+
+.password-form__input.correct {
+  border-color: #4CAF50;
+  animation: pulseInput 1.5s ease-in-out infinite;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.keypad__button {
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  border: none;
+  background-color: var(--bg-white-trans);
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.keypad__button:hover {
+  background-color: var(--pink-strong);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 102, 178, 0.5);
+}
+
+.keypad__button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.keypad__button--clear {
+  background-color: var(--pink-strong);
+  color: white;
+  grid-column: 1;
+}
+
+.keypad__button[data-value="0"] {
+  grid-column: 2;
+}
+
+.keypad__button--submit {
+  background-color: var(--pink-strong);
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(255, 102, 178, 0.5);
+  animation: glowSubmit 2s ease-in-out infinite;
+  grid-column: 3;
+}
+
+.keypad__button--submit:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 0 30px rgba(255, 102, 178, 0.8);
+}
+
+.keypad__button--submit:active {
+  transform: scale(0.95);
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowText {
+  0%, 100% { text-shadow: 0 0 10px var(--pink-glow-1), 0 0 20px var(--pink-glow-2); }
+  50% { text-shadow: 0 0 20px rgba(255, 102, 178, 1), 0 0 30px rgba(255, 102, 178, 0.7); }
+}
+
+@keyframes bounceAvatar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseInput {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 102, 178, 0.8); border-color: #4CAF50;}
+  50% { box-shadow: 0 0 30px rgba(255, 102, 178, 1); border-color: #4CAF50;}
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes glowSubmit {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 102, 178, 0.5); }
+  50% { box-shadow: 0 0 25px rgba(255, 102, 178, 0.9); }
+}
+
+.heart-particle {
+  position: absolute;
+  top: -20px;
+  width: 20px;
+  height: 20px;
+  clip-path: path('M10 3.22l-.61-.6C7.4 1.13 4.26 1.77 3 3.84 1.27 6.46 2.07 10.29 5.5 13.56l4.5 4.5 4.5-4.5c3.43-3.27 4.23-7.1 2.5-9.72-1.26-2.07-4.4-2.71-6.39-1.22l-.61.6z');
+  animation-name: floatHeart;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+@keyframes floatHeart {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(105vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .password-form {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .password-form__avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .password-form__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .password-form__input {
+    width: 200px;
+  }
+
+  .keypad {
+    gap: 10px;
+  }
+
+  .keypad__button {
+    width: 55px;
+    height: 55px;
+    font-size: 18px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

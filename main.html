@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine Day</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="main.css"/>
+</head>
+<body>
+  <div class="bg-layer layer-1"></div>
+  <div class="bg-layer layer-2"></div>
+  <div class="bg-layer layer-3"></div>
+
+  <canvas id="hearts"></canvas>
+  <canvas id="fx"></canvas>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand" aria-label="Valentine">
+        <i class="fa-solid fa-heart brand-icon"></i>
+        <span>Happy Valentine Day</span>
+      </div>
+
+      <div class="top-actions">
+        <button class="chip icon-chip" id="btnTheme" title="Đổi tone" aria-label="Đổi tone">
+          <i class="fa-solid fa-palette"></i>
+        </button>
+      </div>
+    </header>
+
+    <section class="card hero" id="screenHero">
+      <div class="hero-icon">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+
+      <h1 class="title">
+        Chúc em một mùa <span class="glow">Valentine</span> thật ấm áp 💗
+      </h1>
+
+      <p class="subtitle">
+        Mong rằng giữa thế giới rộng lớn và vội vã này,
+        em vẫn tìm thấy những điều dịu dàng dành riêng cho mình.
+        Mong mỗi nụ cười của em đều đến từ sự bình yên,
+        mỗi khoảnh khắc trôi qua đều mang theo chút ngọt ngào,
+        để khi Valentine khẽ chạm ngõ,
+        em biết rằng mình luôn được yêu thương
+        theo cách nhẹ nhàng và chân thành nhất.
+      </p>
+
+      <div class="mini">
+        <button class="link" id="btnOpenNotes">
+          <i class="fa-solid fa-scroll"></i>
+          <span>Lời nhắn</span>
+        </button>
+
+        <button class="link" id="btnOpenGallery">
+          <i class="fa-solid fa-images"></i>
+          <span>Gallery</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card modal hidden" id="modalNotes" aria-hidden="true">
+      <div class="modal-head">
+        <h2><i class="fa-solid fa-scroll"></i> Lời nhắn</h2>
+        <button class="icon-btn" data-close="modalNotes" aria-label="Đóng">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="note">
+          <p class="note-title">Gửi người đặc biệt 💗</p>
+
+          <div id="noteText">
+            <p>
+              Anh đã luôn mơ những giấc mơ thật đẹp, những giấc mơ trong đó có em.
+              Em đến bên anh thật nồng nàn, say đắm như sự sắp đặt của số phận.
+              Trong mơ, anh là người hạnh phúc và anh cứ muốn kéo dài giấc mơ hạnh phúc ấy, kéo dài mãi mãi…
+              Thời gian có thể trôi đi nhưng tình yêu anh dành cho em là không gì thay đổi được.
+              Anh rất hạnh phúc khi được ở bên em, lo lắng, yêu thương em.
+              Nếu anh không gặp em, anh sẽ không thích em. Nếu anh không thích em, anh sẽ không yêu em.
+              Nếu anh không yêu em, anh sẽ không nhớ em. Nhưng anh đã làm, đang làm và sẽ làm. Yêu em thật nhiều…
+            </p>
+          </div>
+
+          <p class="muted" id="noteMuted">Chúc em yêu một ngày Valentine thật vui vẻ và hạnh phúc.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card modal hidden" id="modalGallery" aria-hidden="true">
+      <div class="modal-head">
+        <h2><i class="fa-solid fa-images"></i> Gallery</h2>
+        <button class="icon-btn" data-close="modalGallery" aria-label="Đóng">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="muted">Một vài khoảnh khắc dễ thương để nhớ mãi ✨</p>
+
+        <div class="grid">
+          <figure class="ph" data-label="Khoảnh khắc #1">
+            <img src="assets/anh1.jpg" alt="Khoảnh khắc #1" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #1</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #2">
+            <img src="assets/anh2.jpg" alt="Khoảnh khắc #2" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #2</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #3">
+            <img src="assets/anh3.jpg" alt="Khoảnh khắc #3" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #3</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #4">
+            <img src="assets/anh4.jpg" alt="Khoảnh khắc #4" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #4</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #5">
+            <img src="assets/anh5.jpg" alt="Khoảnh khắc #5" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #5</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #6">
+            <img src="assets/anh6.jpg" alt="Khoảnh khắc #6" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #6</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #7">
+            <img src="assets/anh7.jpg" alt="Khoảnh khắc #7" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #7</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #8">
+            <img src="assets/anh8.jpg" alt="Khoảnh khắc #8" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #8</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #9">
+            <img src="assets/anh9.jpg" alt="Khoảnh khắc #9" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #9</span></div>
+          </figure>
+          <figure class="ph" data-label="Khoảnh khắc #10">
+            <img src="assets/anh10.jpg" alt="Khoảnh khắc #10" loading="lazy">
+            <div class="ph-fallback" aria-hidden="true"><i class="fa-regular fa-image"></i><span>Khoảnh khắc #10</span></div>
+          </figure>
+        </div>
+
+        <div class="row">
+          <button class="btn ghost" data-close="modalGallery">
+            <i class="fa-solid fa-xmark"></i><span>Đóng</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox hidden" id="lightbox" aria-hidden="true">
+    <div class="lb-backdrop" id="lbBackdrop"></div>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Ảnh trước"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Ảnh sau"><i class="fa-solid fa-chevron-right"></i></button>
+
+    <div class="lb-card" role="dialog" aria-modal="true" aria-label="Xem ảnh">
+      <button class="lb-close" id="lbClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <img id="lbImg" alt="Ảnh kỉ niệm">
+      <div class="lb-caption" id="lbCaption"></div>
+    </div>
+  </div>
+
+  <div class="gate" id="musicGate" aria-hidden="false">
+    <div class="gate-card">
+      <div class="gate-icon"><i class="fa-solid fa-volume-high"></i></div>
+      <h3>Bật nhạc nha? 🎧💗</h3>
+      <p>Nhấn OK để mở nhạc và bắt đầu “mood” Valentine.</p>
+      <button class="gate-ok" id="gateOk">
+        <i class="fa-solid fa-check"></i><span>OK</span>
+      </button>
+      <div class="gate-hint" id="gateHint"></div>
+    </div>
+  </div>
+
+  <audio id="music" loop preload="auto">
+    <source src="./assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
