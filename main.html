@@ -166,22 +166,21 @@
     </div>
   </div>
 
-  <div class="gate" id="musicGate" aria-hidden="false">
-    <div class="gate-card">
-      <div class="gate-icon"><i class="fa-solid fa-volume-high"></i></div>
-      <h3>Bật nhạc nha? 🎧💗</h3>
-      <p>Nhấn OK để mở nhạc và bắt đầu “mood” Valentine.</p>
-      <button class="gate-ok" id="gateOk">
-        <i class="fa-solid fa-check"></i><span>OK</span>
-      </button>
-      <div class="gate-hint" id="gateHint"></div>
-    </div>
-  </div>
+  <audio id="bgMusic" src="asset/music.mp3" loop></audio>
 
-  <audio id="music" loop preload="auto">
-    <source src="./assets/music.mp3" type="audio/mpeg">
-  </audio>
+<script>
+const music = document.getElementById("bgMusic");
+
+// thử tự phát khi vào trang
+window.addEventListener("load", () => {
+  music.play().catch(() => {
+    // nếu bị chặn thì phát khi người dùng chạm lần đầu
+    document.addEventListener("click", () => music.play(), { once: true });
+  });
+});
+</script>
 
   <script src="app.js"></script>
 </body>
 </html>
+
